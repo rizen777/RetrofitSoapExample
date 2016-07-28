@@ -25,14 +25,14 @@ public class Api {
 
     private static final Charset UTF8 =  Charset.forName("UTF-8");
 
-    public static RetrofitService createRetrofitService() {
+    public static RetrofitService createRetrofitService(String host) {
         LoggingInterceptor interceptor = new LoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();
         httpClientBuilder.addInterceptor(interceptor);
-        Retrofit restAdapter = new Retrofit.Builder()
-                .baseUrl("http:host/")
+         Retrofit restAdapter = new Retrofit.Builder()
+                .baseUrl(host)
                 .client(httpClientBuilder.build())
                 .addConverterFactory(SimpleXmlConverterFactory.create())
                 .build();

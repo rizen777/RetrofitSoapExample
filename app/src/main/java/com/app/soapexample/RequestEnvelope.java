@@ -5,21 +5,16 @@ import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.NamespaceList;
 import org.simpleframework.xml.Root;
 
-import okhttp3.RequestBody;
-
 @Root(name = "soap12:Envelope")
 @NamespaceList({
-        @Namespace(reference = "http://www.w3.org/2001/XMLSchema-instance", prefix = "xsi"),
-        @Namespace(reference = "http://www.w3.org/2001/XMLSchema", prefix = "xsd"),
-        @Namespace(prefix = "soap12", reference = "http://www.w3.org/2003/05/soap-envelope")
+        @Namespace(reference = "test.belspec.com", prefix = "tes"),
+        @Namespace(prefix = "soap12", reference = "http://schemas.xmlsoap.org/soap/envelope/")
 })
 public class RequestEnvelope {
     @Element(name = "soap12:Body")
-    private RequestBody body;
-    public RequestBody getBody() {
-        return body;
-    }
-    public void setBody(RequestBody body) {
+    public TestModel body;
+
+    public void setBody(TestModel body) {
         this.body = body;
     }
 }
